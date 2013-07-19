@@ -4,4 +4,4 @@
 #### bundle
         please put this folder into ~/.vim/
 #### vimrc
-        the config of vim, pleash place it in /etc/vim/
+        the config of vim, please place it in /etc/vim/
