@@ -22,4 +22,4 @@ cp -r ~/.zshrc                        ~/workspace/git/mydotfile/oh-my-zsh/
 cd ~/workspace/git/mydotfile
 git add .
 git commit -m 'backup'
-git push -u ocxco
+git push
