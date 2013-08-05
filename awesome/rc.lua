@@ -57,15 +57,15 @@ layouts =
 {
     awful.layout.suit.floating,
     awful.layout.suit.tile,
-    awful.layout.suit.tile.left,
-    awful.layout.suit.tile.bottom,
-    awful.layout.suit.tile.top,
-    awful.layout.suit.fair,
-    awful.layout.suit.fair.horizontal,
-    awful.layout.suit.spiral,
-    awful.layout.suit.spiral.dwindle,
+    -- awful.layout.suit.tile.left,
+    -- awful.layout.suit.tile.bottom,
+    -- awful.layout.suit.tile.top,
+    -- awful.layout.suit.fair,
+    -- awful.layout.suit.fair.horizontal,
+    -- awful.layout.suit.spiral,
+    -- awful.layout.suit.spiral.dwindle,
     awful.layout.suit.max,
-    awful.layout.suit.max.fullscreen,
+    -- awful.layout.suit.max.fullscreen,
     awful.layout.suit.magnifier
 }
 -- }}}
@@ -75,7 +75,7 @@ layouts =
 tags = {}
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
-    tags[s] = awful.tag({'editor','browser', 'other', 'chat', 'mail', 'blank'}, s, layouts[12])
+    tags[s] = awful.tag({'editor','browser', 'chat', 'mail', 'other', 'blank'}, s, layouts[3])
 end
 -- }}}
 
@@ -377,23 +377,3 @@ end)
 client.add_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.add_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
-
---vicious
-uptimewidget = widget({ type = "textbox" })
-vicious.register(uptimewidget, vicious.widgets.uptime, "$4 $5 $6 | ", 7)
-
-cpuwidget = widget({ type = "textbox" })
-vicious.register(cpuwidget, vicious.widgets.cpu, "$1% | ", 3)
-
-memwidget = widget({ type = "textbox" })
-vicious.register(memwidget, vicious.widgets.mem, "$1% ($2MB/$3MB) | ", 10)
-
-mystatusbar = awful.wibox({ position = "bottom", name = "mystatusbar" })
-mystatusbar.widgets = {
-    mytextclock,
-    memwidget,
-    cpuwidget,
-    uptimewidget,
-    layout = awful.widget.layout.horizontal.rightleft
-}
-mystatusbar.screen = 1
