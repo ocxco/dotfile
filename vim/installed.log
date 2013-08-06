@@ -1,0 +1,24 @@
+bundle:nerdtree
+    autoload/nerdtree.vim
+    doc/NERD_tree.txt
+    lib/nerdtree
+    nerdtree_plugin/exec_menuitem.vim
+    nerdtree_plugin/fs_menu.vim
+    plugin/NERD_tree.vim
+    README.markdown
+    syntax/nerdtree.vim
+bundle:vim-airline
+    autoload/airline
+    autoload/airline.vim
+    doc/airline.txt
+    plugin/airline.vim
+    README.md
+bundle:vim-mercenary
+    doc/mercenary.txt
+    plugin/mercenary.vim
+    README.markdown
+    syntax/mercenaryblame.vim
+bundle:vim-surround
+    doc/surround.txt
+    plugin/surround.vim
+    README.markdown
