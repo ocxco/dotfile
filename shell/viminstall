@@ -1,0 +1,34 @@
+#!/bin/bash
+
+baseDir=`pwd | rev | awk -F \/ '{print $1}' | rev`
+logFile="/home/cxc/workspace/git/mydotfile/vim/installed.log"
+fileList=`ls`
+flag=0
+for fileOrDir in $fileList
+do
+    if [ $fileOrDir == "plugin" ]||[ $fileOrDir == "doc" ]|| \
+        [ $fileOrDir == "syntax" ]||[ $fileOrDir == "autoload" ]; then
+        let flag=1
+    fi
+done
+if [ $flag == 0 ]; then
+    echo error: please run this command in a vim bundle dir
+    exit;
+fi
+echo "start install bundle $baseDir"
+echo bundle:$baseDir >> $logFile
+for fileOrDir in $fileList
+do
+    cp -r $fileOrDir "/usr/share/vim/vim73/"
+    if [ ! -d $fileOrDir ]; then
+        echo "    $fileOrDir" >> $logFile
+        echo "    "$baseDir/$fileOrDir was installed
+    else
+        for fileName in `ls $fileOrDir`
+        do
+            echo "    $fileOrDir/$fileName" >> $logFile
+            echo "    "$baseDir/$fileOrDir/$fileName was installed
+        done
+    fi
+done
+echo bundle $baseDir install finished
