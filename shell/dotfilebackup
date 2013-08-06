@@ -2,24 +2,24 @@
 # 备份dotfile到git项目目录下面
 
 # vim
-cp -r /usr/share/vim/vim73/doc/*        ~/workspace/git/mydotfile/vim/doc/
-cp -r /usr/share/vim/vim73/plugin/*     ~/workspace/git/mydotfile/vim/plugin/
-cp -r /usr/share/vim/vim73/syntax/*     ~/workspace/git/mydotfile/vim/syntax/
-cp -r /usr/share/vim/vim73/autoload/*   ~/workspace/git/mydotfile/vim/autoload/
-cp -r ~/.vim/bundle/*                   ~/workspace/git/mydotfile/vim/bundle/
+cp -r /usr/share/vim/vim73/doc/*        ~/workspace/git/dotfile/vim/doc/
+cp -r /usr/share/vim/vim73/plugin/*     ~/workspace/git/dotfile/vim/plugin/
+cp -r /usr/share/vim/vim73/syntax/*     ~/workspace/git/dotfile/vim/syntax/
+cp -r /usr/share/vim/vim73/autoload/*   ~/workspace/git/dotfile/vim/autoload/
+cp -r ~/.vim/bundle/*                   ~/workspace/git/dotfile/vim/bundle/
 
 # awesome
-cp -r ~/.config/awesome/rc.lua          ~/workspace/git/mydotfile/awesome/
-cp -r /usr/share/awesome/*              ~/workspace/git/mydotfile/awesome/
+cp -r ~/.config/awesome/rc.lua          ~/workspace/git/dotfile/awesome/
+cp -r /usr/share/awesome/*              ~/workspace/git/dotfile/awesome/
 
 # shell
-cp -r /usr/bin/refresh                  ~/workspace/git/mydotfile/shell/
-cp -r /usr/bin/dotfilebackup            ~/workspace/git/mydotfile/shell/
+cp -r /usr/bin/refresh                  ~/workspace/git/dotfile/shell/
+cp -r /usr/bin/dotfilebackup            ~/workspace/git/dotfile/shell/
 
 # oh-my-zsh
-cp -r ~/.zshrc                        ~/workspace/git/mydotfile/oh-my-zsh/
+cp -r ~/.zshrc                        ~/workspace/git/dotfile/oh-my-zsh/
 
-cd ~/workspace/git/mydotfile
+cd ~/workspace/git/dotfile
 git add .
 git commit -m "`date +"%Y-%m-%d %H:%M:%S"` backup"
 git push
