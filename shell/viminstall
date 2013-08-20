@@ -1,7 +1,12 @@
 #!/bin/bash
 
+if [ `whoami` != 'root' ]; then
+    echo Please run it as root
+    exit
+fi
+
 baseDir=`pwd | rev | awk -F \/ '{print $1}' | rev`
-logFile="/home/cxc/workspace/git/mydotfile/vim/installed.log"
+logFile="/home/cxc/workspace/git/dotfile/vim/installed.log"
 fileList=`ls`
 flag=0
 for fileOrDir in $fileList

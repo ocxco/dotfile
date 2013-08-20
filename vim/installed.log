@@ -22,3 +22,17 @@ bundle:vim-surround
     doc/surround.txt
     plugin/surround.vim
     README.markdown
+bundle:vim-gocode
+    autoload/go
+    autoload/gocomplete.vim
+    ftdetect/gofiletype.vim
+    ftplugin/go
+    ftplugin/go.vim
+    indent/go.vim
+    pathogen_update.sh
+    plugin/godoc.vim
+    README.md
+    readme.txt
+    syntax/godoc.vim
+    syntax/go.vim
+    update.sh
