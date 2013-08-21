@@ -45,6 +45,8 @@ plugins=(git)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
+GO_HOME="/usr/local/go"
+export PATH=$PATH:$GO_HOME/bin
 export PATH=$PATH:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin:/usr/local/php/bin/:/usr/local/php/sbin/:/usr/local/mysql/bin:/usr/local/mmseg/bin:/usr/local/coreseek/bin:/usr/local/sbin/:/Users/cxc/.rvm/bin:/Users/cxc/.rvm/bin:/Users/cxc/Workspace/platform-tools/:/Applications/AraxisMerge.app/Contents/Utilities:/usr/local/wpsoffice/
 
 #history
