@@ -72,6 +72,10 @@ if !exists("g:user_defined_snippets")
     let g:user_defined_snippets = "$VIMRUNTIME/plugin/my_snippets.vim"
 endif
 
+if !exists("g:input")
+    let g:input = "`<...>`"
+endif
+
 " ----------------------------
 let s:expanded = 0  "in case of inserting char after expand
 let s:signature_list = []
@@ -247,33 +251,44 @@ let g:template['c']['in'] = "#include    \"\"\<left>"
 let g:template['c']['is'] = "#include  <>\<left>"
 let g:template['c']['ff'] = "#ifndef  \<c-r>=GetFileName()\<cr>\<CR>#define  \<c-r>=GetFileName()\<cr>".
             \repeat("\<cr>",5)."#endif  /*\<c-r>=GetFileName()\<cr>*/".repeat("\<up>",3)
-let g:template['c']['for'] = "for( ".g:rs."...".g:re." ; ".g:rs."...".g:re." ; ".g:rs."...".g:re." )\<cr>{\<cr>".
-            \g:rs."...".g:re."\<cr>}\<cr>"
-let g:template['c']['main'] = "int main(int argc, char \*argv\[\])\<cr>{\<cr>".g:rs."...".g:re."\<cr>}"
-let g:template['c']['switch'] = "switch ( ".g:rs."...".g:re." )\<cr>{\<cr>case ".g:rs."...".g:re." :\<cr>break;\<cr>case ".
-            \g:rs."...".g:re." :\<cr>break;\<cr>default :\<cr>break;\<cr>}"
-let g:template['c']['if'] = "if( ".g:rs."...".g:re." )\<cr>{\<cr>".g:rs."...".g:re."\<cr>}"
-let g:template['c']['while'] = "while( ".g:rs."...".g:re." )\<cr>{\<cr>".g:rs."...".g:re."\<cr>}"
-let g:template['c']['ife'] = "if( ".g:rs."...".g:re." )\<cr>{\<cr>".g:rs."...".g:re."\<cr>} else\<cr>{\<cr>".g:rs."...".
-            \g:re."\<cr>}"
+let g:template['c']['for'] = "for( ". g:input ." ; ". g:input ." ; ". g:input ." )\<cr>{\<cr>".
+            \g:input."\<cr>}\<cr>"
+let g:template['c']['main'] = "int main(int argc, char \*argv\[\])\<cr>{\<cr>". g:input ."\<cr>}"
+let g:template['c']['switch'] = "switch ( ". g:input ." )\<cr>{\<cr>case ". g:input ." :\<cr>break;\<cr>case ". g:input ." :\<cr>break;\<cr>default :\<cr>break;\<cr>}"
+let g:template['c']['if'] = "if( ". g:input ." )\<cr>{\<cr>". g:input ."\<cr>}"
+let g:template['c']['while'] = "while( ". g:input ." )\<cr>{\<cr>". g:input ."\<cr>}"
+let g:template['c']['ife'] = "if( ". g:input ." )\<cr>{\<cr>". g:input ."\<cr>} else\<cr>{\<cr>". g:input ."\<cr>}"
 
 " ---------------------------------------------
 " PHP templates
 let g:template['php'] = {}
 let g:template['php']['pp'] = "<?php\<cr>"
-let g:template['php']['de'] = "define('".g:rs."...".g:re."', ".g:rs."...".g:re.");\<cr>"
-let g:template['php']['in'] = "include '".g:rs."...".g:re."';\<cr>"
-let g:template['php']['ino'] = "include_once '".g:rs."...".g:re."';\<cr>"
-let g:template['php']['re'] = "require '".g:rs."...".g:re."';\<cr>"
-let g:template['php']['reo'] = "require_once '".g:rs."...".g:re."';\<cr>"
-let g:template['php']['for'] = "for (".g:rs."...".g:re."; ".g:rs."...".g:re."; ".g:rs."...".g:re.") {\<cr>".g:rs."...".g:re."\<cr>}\<cr>"
-let g:template['php']['switch'] = "switch (".g:rs."...".g:re.") {\<cr>case ".g:rs."...".g:re.":\<cr>break;\<cr>case ".g:rs."...".g:re.":\<cr>break;\<cr>default :\<cr>break;\<cr>}"
-let g:template['php']['if'] = "if (".g:rs."...".g:re.") {\<cr>".g:rs."...".g:re."\<cr>}"
-let g:template['php']['while'] = "while (".g:rs."...".g:re.") {\<cr>".g:rs."...".g:re."\<cr>}"
-let g:template['php']['ife'] = "if (".g:rs."...".g:re.") {\<cr>".g:rs."...".g:re."\<cr>} else {\<cr>".g:rs."...".g:re."\<cr>}"
-let g:template['php']['pf'] = "public function ".g:rs."...".g:re." (".g:rs."...".g:re.")\<cr>{\<cr>".g:rs."...".g:re."\<cr>}\<cr>"
-let g:template['php']['psf'] = "public static function ".g:rs."...".g:re." (".g:rs."...".g:re.")\<cr>{\<cr>".g:rs."...".g:re."\<cr>}\<cr>"
-let g:template['php']['prf'] = "private function ".g:rs."...".g:re." (".g:rs."...".g:re.")\<cr>{\<cr>".g:rs."...".g:re."\<cr>}\<cr>"
+let g:template['php']['de'] = "define('". g:input ."', ". g:input .");\<cr>"
+let g:template['php']['in'] = "include '". g:input ."';\<cr>"
+let g:template['php']['ino'] = "include_once '". g:input ."';\<cr>"
+let g:template['php']['re'] = "require '". g:input ."';\<cr>"
+let g:template['php']['reo'] = "require_once '". g:input ."';\<cr>"
+let g:template['php']['for'] = "for (". g:input ."; ". g:input ."; ". g:input .") {\<cr>". g:input ."\<cr>}\<cr>"
+let g:template['php']['switch'] = "switch (". g:input .") {\<cr>case ". g:input .":\<cr>break;\<cr>case ". g:input .":\<cr>break;\<cr>default :\<cr>break;\<cr>}"
+let g:template['php']['if'] = "if (". g:input .") {\<cr>". g:input ."\<cr>}"
+let g:template['php']['while'] = "while (". g:input .") {\<cr>". g:input ."\<cr>}"
+let g:template['php']['ife'] = "if (". g:input .") {\<cr>". g:input ."\<cr>} else {\<cr>". g:input ."\<cr>}"
+let g:template['php']['pf'] = "public function ". g:input ." (". g:input .")\<cr>{\<cr>". g:input ."\<cr>}\<cr>"
+let g:template['php']['psf'] = "public static function ". g:input ." (". g:input .")\<cr>{\<cr>". g:input ."\<cr>}\<cr>"
+let g:template['php']['prf'] = "private function ". g:input ." (". g:input .")\<cr>{\<cr>". g:input ."\<cr>}\<cr>"
+" ---------------------------------------------
+" Go templates
+let g:template['go'] = {}
+let g:template['go']['pa'] = "package " . g:input
+let g:template['go']['pm'] = "package main\<cr>"
+let g:template['go']['im'] = "import (\<cr>" . g:input ."\<cr>)\<cr>" 
+let g:template['go']['fm'] = "func main () {\<cr>" . g:input . "\<cr>}\<cr>"
+let g:template['go']['fn'] = "func ". g:input ." (". g:input .") (". g:input .") {\<cr>" . g:input . "\<cr>}\<cr>"
+let g:template['go']['for'] = "for ". g:input ." {\<cr>". g:input ."\<cr>}\<cr>"
+let g:template['go']['switch'] = "switch ". g:input ." {\<cr>case ". g:input .":\<cr>case ". g:input .":\<cr>default:\<cr>}"
+let g:template['go']['if'] = "if ". g:input ." {\<cr>". g:input ."\<cr>}"
+let g:template['go']['ife'] = "if ". g:input ." {\<cr>". g:input ."\<cr>} else {\<cr>". g:input ."\<cr>}"
+
 " ---------------------------------------------
 " common templates
 let g:template['_'] = {}
