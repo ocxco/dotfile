@@ -57,7 +57,7 @@ endif
 " Variable Definitions: {{{1
 " options, define them as you like in vimrc:
 if !exists("g:completekey")
-    let g:completekey = "<tab>"   "hotkey
+    let g:completekey = "tt"   "hotkey
 endif
 
 if !exists("g:rs")
