@@ -18,5 +18,5 @@ cp -r $HOME/.zshrc                      $GIT_HOME/oh-my-zsh/
 echo "Backup finished, may need you to input your git account and password...\n"
 cd $GIT_HOME
 git add .
-git commit -m "`date +"%Y-%m-%d %H:%M:%S"` backup"
+git commit -a -m "`date +"%Y-%m-%d %H:%M:%S"` backup"
 git push
