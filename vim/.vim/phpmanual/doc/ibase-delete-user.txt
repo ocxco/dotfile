@@ -1,0 +1,12 @@
+ibase_delete_user -- Delete a user from a security database
+
+  bool ibase_delete_user(resource service_handle, string user_name)~
+
+This function is currently not documented; only its argument list is
+available.
+
+Returns &true; on success or &false; on failure.
+
+|ibase_add_user| |ibase_modify_user|
+
+vim:ft=help:

@@ -1,0 +1,35 @@
+urldecode -- Decodes URL-encoded string
+
+  string urldecode(string str)~
+
+Decodes any %## encoding in the given string. Plus symbols ('+') are decoded
+to a space character.
+
+{str} The string to be decoded.
+
+Returns the decoded string.
+
+|urldecode| example
+
+<?php >
+  $query = "my=apples&amp;are=green+and+red";
+  
+  foreach (explode('&amp;', $query) as $chunk) {
+      $param = explode("=", $chunk);
+  
+      if ($param) {
+          printf("Value for parameter \"%s\" is \"%s\"<br/>\n", urldecode($param[0]), urldecode($param[1]));
+      }
+  }
+?>
+
+
+
+
+
+The superglobals $_GET and $_REQUEST are already decoded. Using |urldecode| on
+an element in $_GET or $_REQUEST could have unexpected and dangerous results.
+
+|urlencode| |rawurlencode| |rawurldecode| RFC 3986
+
+vim:ft=help:

@@ -1,26 +1,21 @@
 #!/bin/sh
 # 备份dotfile到git项目目录下面
-
+GIT_HOME="/home/cxc/workspace/git/dotfile"
 # vim
-cp -r /usr/share/vim/vim73/doc/*        ~/workspace/git/dotfile/vim/doc/
-cp -r /usr/share/vim/vim73/plugin/*     ~/workspace/git/dotfile/vim/plugin/
-cp -r /usr/share/vim/vim73/syntax/*     ~/workspace/git/dotfile/vim/syntax/
-cp -r /usr/share/vim/vim73/autoload/*   ~/workspace/git/dotfile/vim/autoload/
-cp -r ~/.vim/bundle/*                   ~/workspace/git/dotfile/vim/bundle/
+cp -r $HOME/.vim        $GIT_HOME/vim/
 
 # awesome
-cp -r ~/.config/awesome/rc.lua          ~/workspace/git/dotfile/awesome/
-cp -r /usr/share/awesome/*              ~/workspace/git/dotfile/awesome/
+cp -r $HOME/.config/awesome/rc.lua      $GIT_HOME/awesome/
+cp -r /usr/share/awesome/*              $GIT_HOME/awesome/
 
 # shell
-cp -r /usr/bin/refresh                  ~/workspace/git/dotfile/shell/
-cp -r /usr/bin/dotfilebackup            ~/workspace/git/dotfile/shell/
-cp -r /usr/bin/viminstall               ~/workspace/git/dotfile/shell/
+cp -r /usr/bin/refresh                  $GIT_HOME/shell/
+cp -r /usr/bin/dotfilebackup            $GIT_HOME/shell/
 
 # oh-my-zsh
-cp -r ~/.zshrc                        ~/workspace/git/dotfile/oh-my-zsh/
+cp -r $HOME/.zshrc                      $GIT_HOME/oh-my-zsh/
 
-cd ~/workspace/git/dotfile
+cd $GIT_HOME
 git add .
 git commit -m "`date +"%Y-%m-%d %H:%M:%S"` backup"
 git push

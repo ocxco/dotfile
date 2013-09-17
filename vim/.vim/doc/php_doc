@@ -1,0 +1,2 @@
+#!/bin/bash
+links http://www.php.net/$1

@@ -16,5 +16,4 @@ echo cscope 索引文件生成完毕
 
 # 更新.tags 文件
 ctags -R --fields=+lS -f .tags
-
 echo .tags 文件已更新

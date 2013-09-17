@@ -1,0 +1,17 @@
+zip_entry_read -- Read from an open directory entry
+
+  string zip_entry_read(resource zip_entry [, int length])~
+
+Reads from an open directory entry.
+
+{zip_entry} A directory entry returned by |zip_read|.
+
+{length} The number of bytes to return.
+
+This should be the uncompressed length you wish to read.
+
+Returns the data read, empty string on end of a file, or &false; on error.
+
+|zip_entry_open| |zip_entry_close| |zip_entry_filesize|
+
+vim:ft=help:

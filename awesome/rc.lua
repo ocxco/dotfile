@@ -75,8 +75,30 @@ layouts =
 tags = {}
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
-    tags[s] = awful.tag({'editor','browser', 'chat', 'mail', 'other','windows', 'blank'}, s, layouts[3])
+    tags[s] = awful.tag({'terminator','browser', 'chat', 'mail','mysql', 'documents', 'blank'}, s, layouts[3])
 end
+-- autorun apps
+autorun = "true"
+autorunApps = 
+{
+    'google-chrome',
+    'thunderbird',
+    'mysql-workbench',
+    'terminator',
+    'qq2012'
+}
+
+--
+-- 自动移动指定的程序到指定的标签
+apptags =
+{
+    ["google-chrome"] = { screen = 1, tag = 2 },
+    ["mysql-workbench"] = { screen = 1, tag = 'mysql' },
+    ["terminator"] = { screen = 1, tag = 'terminator' },
+    ["firefox"] = { screen = 1, tag = 2},
+    ["thunderbird"] = { screen = 1, tag = 'mail' },
+    ["qq2012"] = { screen = 1, tag = 'chat'}
+}
 -- }}}
 
 -- {{{ Menu

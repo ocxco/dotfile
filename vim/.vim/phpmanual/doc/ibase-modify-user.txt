@@ -1,0 +1,12 @@
+ibase_modify_user -- Modify a user to a security database
+
+  bool ibase_modify_user(resource service_handle, string user_name, string password [, string first_name [, string middle_name [, string last_name]]])~
+
+This function is currently not documented; only its argument list is
+available.
+
+Returns &true; on success or &false; on failure.
+
+|ibase_add_user| |ibase_delete_user|
+
+vim:ft=help:

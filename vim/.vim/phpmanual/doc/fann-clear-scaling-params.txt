@@ -1,0 +1,11 @@
+fann_clear_scaling_params -- Clears scaling parameters
+
+  bool fann_clear_scaling_params(resource ann)~
+
+Clears scaling parameters.
+
+Neural network resource.
+
+Returns &true; on success, or &false; otherwise.
+
+vim:ft=help:

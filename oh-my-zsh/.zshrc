@@ -58,3 +58,13 @@ HISTTIMEFORMAT='%F %T'
 alias ll="ls -lh"
 alias l="ls -a"
 alias dp="display"
+
+if [[ $TERM == xterm* ]] || [[ $TERM == *rxvt* ]]; then # {{{2 设置光标颜色
+      cursorcolor () { echo -ne "\e]12;$*\007" }
+elif [[ $TERM == screen* ]]; then
+    if [[ -n "$TMUX" ]]; then
+        cursorcolor () { echo -ne "\ePtmux;\e\e]12;$*\007\e\\" }
+    else
+        cursorcolor () { echo -ne "\eP\e]12;$*\007\e\\" }
+    fi
+fi
