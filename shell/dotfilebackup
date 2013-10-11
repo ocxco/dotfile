@@ -17,5 +17,6 @@ cp -r $HOME/.zshrc                      $GIT_HOME/oh-my-zsh/
 
 cd $GIT_HOME
 git add .
+git st
 git commit -m "`date +"%Y-%m-%d %H:%M:%S"` backup"
 git push
