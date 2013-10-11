@@ -75,7 +75,7 @@ layouts =
 tags = {}
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
-    tags[s] = awful.tag({'terminator','browser', 'chat', 'mail','mysql', 'documents', 'blank'}, s, layouts[3])
+    tags[s] = awful.tag({'terminator','browser', 'mail','mysql', 'documents', 'chat', 'blank'}, s, layouts[3])
 end
 -- autorun apps
 autorun = "true"
@@ -269,7 +269,9 @@ globalkeys = awful.util.table.join(
     -- Prompt
     awful.key({ modkey },            "r",     function () mypromptbox[mouse.screen]:run() end),
     -- lock screen
-    awful.key({ modkey}, "x", function () awful.util.spawn('slock') end) 
+    awful.key({ modkey}, "x", function () awful.util.spawn('i3lock -i /home/cxc/lockscreen.png') end),
+    awful.key({ modkey}, "+", function () os.execute("amixer set Master $((`amixer get Master | sed 1,4d | sed \"s/.*Playback \\(\[^ \]\\+\\) .*/\\1/g\"` + 2 ))") end),
+    awful.key({ modkey }, "-",function () os.execute("amixer set Master $((`amixer get Master | sed 1,4d | sed \"s/.*Playback \\(\[^ \]\\+\\) .*/\\1/g\"` - 2 ))") end)
     --awful.key({ modkey }, "x",
     --          function ()
     --              awful.prompt.run({ prompt = "Run Lua code: " },

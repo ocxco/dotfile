@@ -197,3 +197,8 @@ nmap gx <Plug>(openbrowser-smart-search)
 vmap gx <Plug>(openbrowser-smart-search)
 nmap zx <Plug>(openbrowser-open)
 vmap zx <Plug>(openbrowser-open)
+
+
+" CoVim setting
+let CoVim_default_name = 'cxc'
+let CoVim_default_port = '12315'

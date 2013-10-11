@@ -1,5 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_cnt =4
 let g:netrw_dirhist_1='/home/cxc/.vim/bundle/openUrl'
 let g:netrw_dirhist_2='/home/cxc/.vim'
 let g:netrw_dirhist_3='/home/cxc/.vim/bundle/open-browser.vim/autoload'
+let g:netrw_dirhist_4='/home/cxc/workspace/www/edm/Worker'

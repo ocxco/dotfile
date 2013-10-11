@@ -1,5 +1,6 @@
 #!/bin/sh
 # 备份dotfile到git项目目录下面
+echo "Starting backup files\n"
 GIT_HOME="/home/cxc/workspace/git/dotfile"
 # vim
 cp -r $HOME/.vim        $GIT_HOME/vim/
@@ -14,9 +15,9 @@ cp -r /usr/bin/dotfilebackup            $GIT_HOME/shell/
 
 # oh-my-zsh
 cp -r $HOME/.zshrc                      $GIT_HOME/oh-my-zsh/
-
+echo "Backup finished, may need you to input your git account and password...\n"
 cd $GIT_HOME
 git add .
-git st
-git commit -m "`date +"%Y-%m-%d %H:%M:%S"` backup"
+git status
+git commit -a -m "`date +"%Y-%m-%d %H:%M:%S"` backup"
 git push
