@@ -1,0 +1,33 @@
+#!/bin/bash
+function menu {
+    echo '""""@@@@@""@@@@"@""@@"@""@""""""'
+    echo '""""@"@"@""@@@@"@"@"@"@""@""""""'
+    echo '""""@"@"@""@@@@"@@""@"@@@@""""""'
+    echo '""""      1) dev          """"""'
+    echo '""""      2) localhost    """"""'
+    echo '""""      3) Exit         """"""'
+    echo '""""""""""""""""""""""""""""""""'
+    echo -n "请选择: "; read SELECT
+}
+function changeHosts() {
+    rm /etc/hosts
+    ln -s /etc/hosts.$version /etc/hosts
+    echo "版本$version切换成功"
+}
+
+while true
+do
+    version=''
+    menu
+    if [ $SELECT -eq 1 ]; then
+        version='dev'
+    elif [ $SELECT -eq 2 ]; then
+        version='localhost'
+    elif [ $SELECT -eq 3 ]; then
+        exit
+    else
+        echo "选择错误!!!"
+        continue
+    fi
+    changeHosts
+done
