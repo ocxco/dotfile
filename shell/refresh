@@ -12,8 +12,8 @@ find `pwd` -path '*cache*' -prune -o -name "*.tpl" -print >> cscope.files
 echo tpl文件路径已保存
 cscope -Rbq
 
-echo cscope 索引文件生成完毕
-
 # 更新.tags 文件
 ctags -R --fields=+lS -f .tags
+clear
+echo cscope 索引文件生成完毕
 echo .tags 文件已更新
