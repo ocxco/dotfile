@@ -1,4 +1,3 @@
-#Just use for change hosts version
 #!/bin/bash
 function menu {
     echo '""""@@@@@""@@@@"@""@@"@""@""""""'
