@@ -202,3 +202,9 @@ vmap zx <Plug>(openbrowser-open)
 " CoVim setting
 let CoVim_default_name = 'cxc'
 let CoVim_default_port = '12315'
+vmap ,xc y:call system("xclip -i -selection clipboard", getreg("\""))<CR>
+nmap ,xp :call setreg("\"",system("xclip -o -selection clipboard"))<CR>p
+nmap ,xf :call system("xclip -i -selection clipboard", bufname('%'))<CR>
+
+highlight Pmenu ctermbg=darkred
+highlight PmenuSel ctermbg=red ctermfg=yellow
