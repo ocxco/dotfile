@@ -1,5 +1,11 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_cnt =9
 let g:netrw_dirhist_1='/etc/nginx/sites-available'
 let g:netrw_dirhist_2='/home/cxc/workspace/www/edm/Script/crmuser/get_soft_bounced_email'
 let g:netrw_dirhist_3='/home/cxc/workspace/www/edm/test'
+let g:netrw_dirhist_4='/etc/service/send_Limit'
+let g:netrw_dirhist_5='/etc/service/send_Edm'
+let g:netrw_dirhist_6='/etc/service/send_crm'
+let g:netrw_dirhist_7='/etc/service/send_crm_monitor'
+let g:netrw_dirhist_8='/etc/service/send_crm_worker'
+let g:netrw_dirhist_9='/etc/service/send_crm_monitor'

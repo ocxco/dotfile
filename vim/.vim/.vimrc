@@ -157,15 +157,15 @@ let g:doxygen_enhanced_color=1
 
 " cscope 命令
 set cscopequickfix=s-,c-,d-,i-,t-,e-
-nmap <C-@>s :cs find s <C-R>=expand("<cword>")<CR><CR>
-nmap <C-@>g :cs find g <C-R>=expand("<cword>")<CR><CR>
-nmap <C-@>c :cs find c <C-R>=expand("<cword>")<CR><CR>
-nmap <C-@>t :cs find t <C-R>=expand("<cword>")<CR><CR>
-nmap <C-@>e :cs find e <C-R>=expand("<cword>")<CR><CR>
-nmap <C-@>f :cs find f <C-R>=expand("<cword>")<CR><CR>
-nmap <C-@>x :cs find f 
-nmap <C-@>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
-nmap <C-@>d :cs find d <C-R>=expand("<cword>")<CR><CR>
+nmap ,css :cs find s <C-R>=expand("<cword>")<CR><CR>
+nmap ,csg :cs find g <C-R>=expand("<cword>")<CR><CR>
+nmap ,csc :cs find c <C-R>=expand("<cword>")<CR><CR>
+nmap ,cst :cs find t <C-R>=expand("<cword>")<CR><CR>
+nmap ,cse :cs find e <C-R>=expand("<cword>")<CR><CR>
+nmap ,csf :cs find f <C-R>=expand("<cword>")<CR><CR>
+nmap ,csx :cs find f 
+nmap ,csi :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+nmap ,csd :cs find d <C-R>=expand("<cword>")<CR><CR>
 
 "vim-airline
 let g:airline_powerline_fonts = 1
@@ -187,6 +187,35 @@ endif
 
 " pathogen
 execute pathogen#infect()
+call pathogen#helptags()
+
+"zen coding
+"syntastic
+" 在打开文件的时候检查
+" let g:syntastic_check_on_open=1
+"
+let g:syntastic_enable_signs=1
+highlight SyntasticErrorLine guibg=#2f0000
+let g:syntastic_mode_map = { 'mode': 'active',
+                               \ 'active_filetypes': ['c'],
+                               \ 'passive_filetypes': ['puppet'] }
+
+let g:syntastic_ignore_files=['\.tpl\.php$']
+let g:syntastic_always_populate_loc_list=1
+let g:syntastic_php_checkers=['php', 'phpcs']
+let g:syntastic_error_symbol='E'
+let g:syntastic_warning_symbol='W'
+noremap ]l :lnext<CR>
+noremap [l :lpre<CR>
+nmap ,ck :SyntasticCheck<CR>
+noremap ,sp :let g:syntastic_php_checkers=['php']<CR>
+noremap ,ss :let g:syntastic_php_checkers=['php', 'phpcs']<CR>
+"phpcs，tab4个空格，编码参考使用CodeIgniter风格
+let g:user_zen_expandabbr_key = '<C-e>'
+let g:user_zen_next_key = ',n'
+let g:user_zen_prev_key = ',N'
+"let g:use_zen_complete_tag = 1
+"let g:syntastic_phpcs_conf = '--tab-width=4 --standard=CodeIgniter'
 
 set runtimepath+=$HOME/.vim/phpmanual/
 au FileType php set keywordprg="help"
@@ -198,10 +227,6 @@ vmap gx <Plug>(openbrowser-smart-search)
 nmap zx <Plug>(openbrowser-open)
 vmap zx <Plug>(openbrowser-open)
 
-
-" CoVim setting
-let CoVim_default_name = 'cxc'
-let CoVim_default_port = '12315'
 vmap ,xc y:call system("xclip -i -selection clipboard", getreg("\""))<CR>
 nmap ,xp :call setreg("\"",system("xclip -o -selection clipboard"))<CR>p
 nmap ,xf :call system("xclip -i -selection clipboard", bufname('%'))<CR>

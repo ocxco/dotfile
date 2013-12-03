@@ -12,6 +12,7 @@ function menu {
 function changeHosts() {
     rm /etc/hosts
     ln -s /etc/hosts.$version /etc/hosts
+    sudo service nscd restart
     echo "版本$version切换成功"
 }
 
