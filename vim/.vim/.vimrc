@@ -62,10 +62,6 @@ if filereadable("/etc/vim/vimrc.local")
   source /etc/vim/vimrc.local
 endif
 
-let Tlist_Show_One_File=1
-let Tlist_Exit_OnlyWindow=1
-let g:winManagerWindowLayout='FileExplorer|TagList'
-nmap wm :WMToggle<cr>
 let g:miniBufExplMapCTabSwitchBufs = 1
 nnoremap <silent> <F3> :Grep<CR>
 filetype plugin indent on " 打开文件类型检测
@@ -94,7 +90,7 @@ elseif filereadable("../../../../.tags")
     set tags+=../../../../.tags
 endif
 
-" 设置自动载入cscope.out文件 
+" 设置自动载入cscope.out文件
 if filereadable("./cscope.out")
     cs add ./cscope.out 
 elseif filereadable("../cscope.out")
@@ -106,6 +102,7 @@ elseif filereadable("../../../cscope.out")
 elseif filereadable("../../../../cscope.out")
     cs add ../../../../cscope.out
 endif
+
 " 设置折叠方式
 set fdm=indent " 更多的缩进表示更高级别的折叠
 " manual 手工定于折叠
@@ -143,8 +140,6 @@ unlet color_normal
 unlet color_insert
 unlet color_exit
 
-let g:EasyMotion_leader_key = ','
-
 " 自动注释插件配置
 let g:DoxygenToolkit_authorName="xuechaoc <xuechaoc@jumei.com>"
 let s:licenseTag = "Copyright(C)\<enter>"
@@ -174,6 +169,9 @@ let g:bufferline_echo = 0
 set laststatus=2
 
 " auto complete pop config
+highlight Pmenu ctermbg=darkred
+highlight PmenuSel ctermbg=red ctermfg=yellow
+
 au FileType php setlocal dict+=~/.vim/bundle/vim-autocomplpop/dict/php_funclist.txt
 if !exists('g:AutoComplPop_Behavior')
     let g:AutoComplPop_Behavior = {}
@@ -184,6 +182,9 @@ if !exists('g:AutoComplPop_Behavior')
         \   'repeat'    : 0,
         \})
 endif
+
+" neocomplete
+let g:neocomplete#enable_at_startup = 1
 
 " pathogen
 execute pathogen#infect()
@@ -226,10 +227,21 @@ nmap gx <Plug>(openbrowser-smart-search)
 vmap gx <Plug>(openbrowser-smart-search)
 nmap zx <Plug>(openbrowser-open)
 vmap zx <Plug>(openbrowser-open)
-
+" 系统剪贴板
 vmap ,xc y:call system("xclip -i -selection clipboard", getreg("\""))<CR>
 nmap ,xp :call setreg("\"",system("xclip -o -selection clipboard"))<CR>p
 nmap ,xf :call system("xclip -i -selection clipboard", bufname('%'))<CR>
+" HG
+nmap ,df :HGdiff<CR>
+nmap ,ba :HGblame<CR>
 
-highlight Pmenu ctermbg=darkred
-highlight PmenuSel ctermbg=red ctermfg=yellow
+" TagbarToggle
+nmap wn :TagbarToggle<CR>
+
+" NERDTreeToggle
+map wm :NERDTreeToggle<CR>
+
+" EasyAlign
+vmap <Enter> <Plug>(EasyAlign)
+nmap ,a <Plug>(EasyAlign)
+"
