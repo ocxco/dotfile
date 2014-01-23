@@ -1,6 +1,7 @@
 " 自动加载配置文件，不用重启vim
 autocmd! bufwritepost _vimrc source %
 set backspace=indent,eol,start
+set cuc cul " 十字架高亮
 " 
 " All system-wide defaults are set in $VIMRUNTIME/debian.vim (usually just
 " /usr/share/vim/vimcurrent/debian.vim) and sourced by the call to :runtime

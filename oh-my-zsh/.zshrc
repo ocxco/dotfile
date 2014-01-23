@@ -46,25 +46,54 @@ source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 GO_HOME="/usr/local/go"
-export PATH=$PATH:$GO_HOME/bin
-export PATH=$PATH:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin:/usr/local/php/bin/:/usr/local/php/sbin/:/usr/local/mysql/bin:/usr/local/mmseg/bin:/usr/local/coreseek/bin:/usr/local/sbin/:/Users/cxc/.rvm/bin:/Users/cxc/.rvm/bin:/Users/cxc/Workspace/platform-tools/:/Applications/AraxisMerge.app/Contents/Utilities:/usr/local/wpsoffice/
+ECLIPSE_HOME='/home/cxc/Workspace/eclipse/'
+ADB_HOME='/home/cxc/Workspace/android/adt-bundle-linux-x86_64-20131030/sdk/platform-tools'
+PHP_HOME='/usr/local/php/bin/'
+export PATH=$PATH:$GO_HOME/bin:$ECLIPSE_HOME:$ADB_HOME:$PHP_HOME
+export PATH=$PATH:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin:/usr/local/sbin/:/usr/local/wpsoffice/
 
 #history
 HISTFILESIZE=50000
 HISTIGNORE=':cd:ls:cat'
 HISTCONTROL=erasedups
 HISTTIMEFORMAT='%F %T'
+setopt APPEND_HISTORY
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt HIST_FCNTL_LOCK
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_SPACE
+setopt HIST_NO_STORE
+setopt HIST_SAVE_NO_DUPS
+setopt HIST_VERIFY
+setopt INC_APPEND_HISTORY
+
 #alias
 alias ll="ls -lh"
 alias l="ls -a"
+alias lah="ls -alh"
 alias dp="display"
+alias pps="ps aux | grep "
+alias cache="memcached -d -u cxc -m 32 -l 0.0.0.0 -p "
+alias brs="hg brs | grep "
 
-if [[ $TERM == xterm* ]] || [[ $TERM == *rxvt* ]]; then # {{{2 设置光标颜色
-      cursorcolor () { echo -ne "\e]12;$*\007" }
-elif [[ $TERM == screen* ]]; then
-    if [[ -n "$TMUX" ]]; then
-        cursorcolor () { echo -ne "\ePtmux;\e\e]12;$*\007\e\\" }
-    else
-        cursorcolor () { echo -ne "\eP\e]12;$*\007\e\\" }
-    fi
-fi
+#if [[ $TERM == xterm* ]] || [[ $TERM == *rxvt* ]]; then # {{{2 设置光标颜色
+#      cursorcolor () { echo -ne "\e]12;$*\007" }
+#elif [[ $TERM == screen* ]]; then
+#    if [[ -n "$TMUX" ]]; then
+#        cursorcolor () { echo -ne "\ePtmux;\e\e]12;$*\007\e\\" }
+#    else
+#        cursorcolor () { echo -ne "\eP\e]12;$*\007\e\\" }
+#    fi
+#fi
+export EDITOR=vim
+
+alias edm=$HOME/Workspace/www/edm
+alias crm=$HOME/Workspace/www/crm
+alias pro=$HOME/Workspace/www/promoman
+alias ser=$HOME/Workspace/www/services
+alias dot=$HOME/Workspace/Git/dotfile
+
+alias  his="history | grep "
+alias  pps="ps aux | grep "
+alias  tailf="tail -f"
