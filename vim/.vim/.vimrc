@@ -2,6 +2,11 @@
 autocmd! bufwritepost _vimrc source %
 set backspace=indent,eol,start
 set cuc cul " 十字架高亮
+
+if $VIM_CRONTAB == "true"
+    set nobackup
+    set nowritebackup
+endif
 " 
 " All system-wide defaults are set in $VIMRUNTIME/debian.vim (usually just
 " /usr/share/vim/vimcurrent/debian.vim) and sourced by the call to :runtime
@@ -229,9 +234,9 @@ vmap gx <Plug>(openbrowser-smart-search)
 nmap zx <Plug>(openbrowser-open)
 vmap zx <Plug>(openbrowser-open)
 " 系统剪贴板
-vmap ,xc y:call system("xclip -i -selection clipboard", getreg("\""))<CR>
-nmap ,xp :call setreg("\"",system("xclip -o -selection clipboard"))<CR>p
-nmap ,xf :call system("xclip -i -selection clipboard", bufname('%'))<CR>
+vmap ,xc y:call system("pbcopy", getreg("\""))<CR>
+nmap ,xp :call setreg("\"",system("pbpaste"))<CR>p
+nmap ,xf :call system("pbcopy", bufname('%'))<CR>
 " HG
 nmap ,df :HGdiff<CR>
 nmap ,ba :HGblame<CR>

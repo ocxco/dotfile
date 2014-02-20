@@ -94,6 +94,8 @@ alias pro=$HOME/Workspace/www/promoman
 alias ser=$HOME/Workspace/www/services
 alias dot=$HOME/Workspace/Git/dotfile
 
-alias  his="history | grep "
-alias  pps="ps aux | grep "
-alias  tailf="tail -f"
+alias his="history | grep "
+alias pps="ps aux | grep "
+alias tailf="tail -f"
+alias xingc="sudo mount 192.168.16.190:/home/share/cxc /Users/cxc/dev190"
+alias crontab="VIM_CRONTAB=true crontab"
