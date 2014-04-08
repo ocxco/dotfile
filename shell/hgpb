@@ -1,0 +1,8 @@
+branch=$(hg branch)
+if [ $1x = '-n'x ];then
+    s="hg push -b $branch --new-branch"
+else
+    s="hg push -b $branch"
+fi
+echo $s
+($s)

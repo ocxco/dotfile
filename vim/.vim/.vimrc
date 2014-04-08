@@ -240,6 +240,9 @@ nmap ,xf :call system("pbcopy", bufname('%'))<CR>
 " HG
 nmap ,df :HGdiff<CR>
 nmap ,ba :HGblame<CR>
+" vimdiff
+nmap ,dg :diffg<CR>
+
 
 " TagbarToggle
 nmap wn :TagbarToggle<CR>

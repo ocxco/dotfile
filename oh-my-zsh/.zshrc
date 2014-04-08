@@ -91,11 +91,14 @@ export EDITOR=vim
 alias edm=$HOME/Workspace/www/edm
 alias crm=$HOME/Workspace/www/crm
 alias pro=$HOME/Workspace/www/promoman
+alias sms=$HOME/Workspace/www/smsrelay/php
 alias ser=$HOME/Workspace/www/services
+alias kb=$HOME/Workspace/www/koubei
 alias dot=$HOME/Workspace/Git/dotfile
 
 alias his="history | grep "
 alias pps="ps aux | grep "
 alias tailf="tail -f"
+alias ic=ifconfig
 alias xingc="sudo mount 192.168.16.190:/home/share/cxc /Users/cxc/dev190"
 alias crontab="VIM_CRONTAB=true crontab"
