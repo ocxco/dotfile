@@ -6,6 +6,8 @@ ZSH=$HOME/.oh-my-zsh
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 ZSH_THEME="cxc"
+# 自动更新
+DISABLE_UPDATE_PROMPT=true
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -40,10 +42,13 @@ ZSH_THEME="cxc"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git)
+plugins=(git mercurial wd urltools web-search vi-mode)
 
 source $ZSH/oh-my-zsh.sh
+#自动提示插件
+#source $ZSH/plugins/incr/incr*.zsh
 
+export EDITOR=vim
 # Customize to your needs...
 GO_HOME="/usr/local/go"
 ECLIPSE_HOME='/home/cxc/Workspace/eclipse/'
@@ -72,10 +77,18 @@ setopt INC_APPEND_HISTORY
 alias ll="ls -lh"
 alias l="ls -a"
 alias lah="ls -alh"
-alias dp="display"
 alias pps="ps aux | grep "
 alias cache="memcached -d -u cxc -m 32 -l 0.0.0.0 -p "
 alias brs="hg brs | grep "
+alias his="history | grep "
+alias grep="grep -n --color"
+alias pps="ps aux | grep "
+alias tailf="tail -f"
+alias ic=ifconfig
+alias crontab="VIM_CRONTAB=true crontab"
+alias mycp=/usr/local/bin/CP
+alias tatt='tmux att -t'
+alias tnew='tmux new -s'
 
 #if [[ $TERM == xterm* ]] || [[ $TERM == *rxvt* ]]; then # {{{2 设置光标颜色
 #      cursorcolor () { echo -ne "\e]12;$*\007" }
@@ -86,19 +99,13 @@ alias brs="hg brs | grep "
 #        cursorcolor () { echo -ne "\eP\e]12;$*\007\e\\" }
 #    fi
 #fi
-export EDITOR=vim
 
-alias edm=$HOME/Workspace/www/edm
-alias crm=$HOME/Workspace/www/crm
-alias pro=$HOME/Workspace/www/promoman
-alias sms=$HOME/Workspace/www/smsrelay/php
-alias ser=$HOME/Workspace/www/services
-alias kb=$HOME/Workspace/www/koubei
-alias dot=$HOME/Workspace/Git/dotfile
+bindkey '^R' history-incremental-pattern-search-backward 
+# Add environment variable COCOS_CONSOLE_ROOT for cocos2d-x
+export COCOS_CONSOLE_ROOT=/Users/cxc/Workspace/cocos2d-x-3.2/tools/cocos2d-console/bin
+export PATH=$COCOS_CONSOLE_ROOT:$PATH
 
-alias his="history | grep "
-alias pps="ps aux | grep "
-alias tailf="tail -f"
-alias ic=ifconfig
-alias xingc="sudo mount 192.168.16.190:/home/share/cxc /Users/cxc/dev190"
-alias crontab="VIM_CRONTAB=true crontab"
+# Add environment variable ANT_ROOT for cocos2d-x
+export ANT_ROOT=/usr/share/java/ant-1.8.2/bin
+export PATH=$ANT_ROOT:$PATH
+
