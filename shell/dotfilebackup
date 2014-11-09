@@ -1,7 +1,7 @@
 #!/bin/sh
 # 备份dotfile到git项目目录下面
 echo "Starting backup files\n"
-GIT_HOME="/home/cxc/workspace/git/dotfile"
+GIT_HOME="/Users/cxc/Workspace/git/dotfile"
 # vim
 cp -r $HOME/.vim        $GIT_HOME/vim/
 

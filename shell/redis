@@ -8,7 +8,7 @@ CLI=/usr/local/bin/redis-cli
 case "$1" in
   start)
         echo -n "Starting redis: "
-        $SERVER $CONFIG
+        $SERVER $CONFIG &
         echo "$NAME."
         ;;
   stop)
@@ -20,7 +20,7 @@ case "$1" in
         echo -n "Restarting Redis Serve: "
         $CLI shutdown
         sleep 1
-        $SERVER $CONFIG
+        $SERVER $CONFIG &
         echo "NAME."
         ;;
   *)
