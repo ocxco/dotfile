@@ -1,0 +1,9 @@
+[ui]
+username = xuechaoc <xuechaoc@jumei.com>
+[merge-tools]
+meld.priority=1
+[extensions]
+jumei = /home/cxc/.jumei_code.py
+[hostfingerprints]
+hg.int.jumei.com = f2:8e:56:15:16:5e:de:fb:28:9c:18:8a:48:66:4a:09:e1:5b:3c:df 
+
