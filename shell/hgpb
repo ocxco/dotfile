@@ -1,8 +1,29 @@
-branch=$(hg branch)
-if [ $1x = '-n'x ];then
-    s="hg push -b $branch --new-branch"
-else
-    s="hg push -b $branch"
-fi
-echo $s
-($s)
+#!/usr/bin/php
+<?php
+$help = "
+# 推送当前分支到仓库中
+# 可选参数 -n --new : --new-branch
+# 可选参数 -f : --force
+";
+$options = getopt('nfh', array('new', 'dev'));
+
+$xargs = '';
+if (isset($options['n']) || isset($options['new'])) {
+    $xargs = ' --new';
+}
+if (isset($options['f'])) {
+    $xargs .= ' -f';
+}
+if (isset($options['h'])) {
+    echo $help;
+    exit;
+}
+$branch = trim(`hg branch`);
+if (isset($options['dev'])) {
+    $command = "hg push dev -b $branch$xargs";
+} else {
+    $command = "hg push -b $branch$xargs"; 
+}
+
+echo $command."\n";
+system($command);

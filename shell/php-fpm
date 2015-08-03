@@ -1,8 +1,8 @@
 #!/bin/bash
  
 NAME=php-fpm
-CONFIG=/usr/local/php/etc/php-fpm.conf
-SERVER=/usr/local/php/sbin/php-fpm
+CONFIG=/etc/php-fpm.conf
+SERVER=/usr/sbin/php-fpm
  
 case "$1" in
   start)
