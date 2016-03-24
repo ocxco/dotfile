@@ -15,8 +15,7 @@ ZSH_THEME_GIT_PROMPT_SUFFIX="%{%f%k%b%K{${bkg}}%B%F{green}%}]"
 ZSH_THEME_GIT_PROMPT_DIRTY=" %{%F{red}%}*%{%f%k%b%}"
 ZSH_THEME_GIT_PROMPT_CLEAN=""
 
-PROMPT='%{%f%k%b%}
-%{%K{${bkg}}%B%F{white}%}%n%{%B%F{green}%}@%{%B%F{red}%}%m %{%b%F{yellow}%K{${bkg}}%}%~%{%B%F{white}%}$(vcprompt -f "  "%n)%{%K%F{green}%}$(vcprompt -f " - "  )%{%K%F{red}%}$(vcprompt -f %b)%E%{%f%k%b%}
-   %{%B%F{yellow}%}✗ %{%f%k%b%}'
-RPROMPT='%{%B%F{cyan}%}%!%{%f%k%b%}'
+RPROMPT='%{$fg[red]%} [%D %*] %{$reset_color%} %{%B%F{cyan}%}%!%{%f%k%b%}'
+PROMPT='%{%f%k%b%}%{%K{${bkg}}%B%F{white}%}%n%{%B%F{green}%}@%{%B%F{red}%}%M %{%b%F{yellow}%K{${bkg}}%}%~%{%B%F{white}%}$(vcprompt -f "  "%n)%{%K%F{green}%}$(vcprompt -f " - "  )%{%K%F{red}%}$(vcprompt -f %b)%E%{%f%k%b%}
+%{%B%F{yellow}%}👉 👉  %{%f%k%b%}'
 
