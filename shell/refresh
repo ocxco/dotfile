@@ -2,15 +2,15 @@
 #找出所有php,js,css文件并已全路径保存。排除所有cache目录
 #生成cscope索引文件
 clear
-#find `pwd` -path '*cache*' -prune -o -name "*.php" -print >  cscope.files
-#echo php文件路径已保存
-#find `pwd` -path '*cache*' -prune -o -name "*.js"  -print >> cscope.files
-#echo js文件路径已保存
-#find `pwd` -path '*cache*' -prune -o -name "*.css" -print >> cscope.files
-#echo css文件路径已保存
-#find `pwd` -path '*cache*' -prune -o -name "*.tpl" -print >> cscope.files
-#echo tpl文件路径已保存
-#cscope -Rbq
+find `pwd` -path '*cache*' -prune -o -name "*.php" -print >  cscope.files
+echo php文件路径已保存
+find `pwd` -path '*cache*' -prune -o -name "*.js"  -print >> cscope.files
+echo js文件路径已保存
+find `pwd` -path '*cache*' -prune -o -name "*.css" -print >> cscope.files
+echo css文件路径已保存
+find `pwd` -path '*cache*' -prune -o -name "*.tpl" -print >> cscope.files
+echo tpl文件路径已保存
+cscope -Rbq
 
 # 更新.tags 文件
 ctags -R --fields=+lS -f .tags
