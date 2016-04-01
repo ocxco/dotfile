@@ -1,0 +1,31 @@
+#!/bin/bash
+ 
+NAME=php-fpm
+CONFIG=/etc/php-fpm.conf
+SERVER=/usr/sbin/php-fpm
+ 
+case "$1" in
+  start)
+        echo -n "Starting $NAME: "
+        $SERVER
+        echo "$NAME."
+        ;;
+  stop)
+        echo -n "Stopping $NAME: "
+        killall php-fpm
+        echo "$NAME."
+        ;;
+  restart)
+        echo -n "Restarting $NAME: "
+        killall php-fpm
+        sleep 1
+        $SERVER
+        echo "$NAME."
+        ;;
+  *)
+        echo "Usage: $NAME {start|stop|restart}" >&2
+        exit 1
+        ;;
+esac
+ 
+exit 0

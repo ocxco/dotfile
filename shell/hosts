@@ -4,7 +4,7 @@ function menu {
     echo '""""@"@"@""@@@@"@"@"@"@""@""""""'
     echo '""""@"@"@""@@@@"@@""@"@@@@""""""'
     echo '""""      1) dev          """"""'
-    echo '""""      2) localhost    """"""'
+    echo '""""      2) local        """"""'
     echo '""""      3) Exit         """"""'
     echo '""""""""""""""""""""""""""""""""'
     echo -n "请选择: "; read SELECT
@@ -12,7 +12,7 @@ function menu {
 function changeHosts() {
     rm /etc/hosts
     ln -s /etc/hosts.$version /etc/hosts
-    sudo service nscd restart
+    sudo dscacheutil -flushcache
     echo "版本$version切换成功"
 }
 
@@ -23,7 +23,7 @@ do
     if [ $SELECT -eq 1 ]; then
         version='dev'
     elif [ $SELECT -eq 2 ]; then
-        version='localhost'
+        version='local'
     elif [ $SELECT -eq 3 ]; then
         exit
     else

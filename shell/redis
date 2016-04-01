@@ -1,0 +1,32 @@
+#!/bin/bash
+ 
+NAME=redis
+CONFIG=/usr/local/etc/redis.conf
+SERVER=/usr/local/bin/redis-server
+CLI=/usr/local/bin/redis-cli
+ 
+case "$1" in
+  start)
+        echo -n "Starting redis: "
+        $SERVER $CONFIG &
+        echo "$NAME."
+        ;;
+  stop)
+        echo -n "Stopping redis: "
+        $CLI shutdown
+        echo "$NAME."
+        ;;
+  restart)
+        echo -n "Restarting Redis Serve: "
+        $CLI shutdown
+        sleep 1
+        $SERVER $CONFIG &
+        echo "NAME."
+        ;;
+  *)
+        echo "Usage: $NAME {start|stop|restart}" >&2
+        exit 1
+        ;;
+esac
+ 
+exit 0

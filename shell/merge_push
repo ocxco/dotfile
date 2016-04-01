@@ -1,0 +1,66 @@
+#!/usr/bin/php
+<?php
+/**
+ * 合并指定分支并推送.
+ * 
+ * @author xuechaoc <xuechaoc@jumei.com>
+ *
+ * @date 2016-01-22
+ */
+
+/**
+ * 输出并执行命令.
+ *
+ * @param string $command 命令.
+ *
+ * @return mixed
+ */
+function exe($command)
+{
+    echo $command."\n";
+    return system($command);
+}
+
+$help = "
+# 拉取指定分支并合并推送到指定仓库.
+# 可选参数 -n  --new : --new-branch
+# 可选参数 -p  --pull: 拉取分支
+# 可选参数   --branch: 拉取分支
+# 可选参数 -m --merge: 合并分支
+# 可选参数 -f --force: 强制推送
+# 可选参数 -d   --dev: 推送到Dev
+";
+$options = getopt('cdfhmnp', array('new', 'dev', 'branch:'));
+
+$xargs = '';
+if (empty($options['branch'])) {
+    echo "请输入分支 --branch=xxx\n, 输入-h查看帮助";
+    exit;
+}
+$branch = $options['branch'];
+$dev = false;
+if (isset($options['d']) || isset($options['dev'])) {
+    $xargs .= ' --dev';
+}
+if (isset($options['n']) || isset($options['new'])) {
+    $xargs .= ' --new';
+}
+if (isset($options['f']) || isset($options['force'])) {
+    $xargs .= ' -f';
+}
+if (isset($options['h'])) {
+    echo $help;
+    exit;
+}
+if (isset($options['p'])) {
+    echo "拉取分支...\n";
+    exe("hg jm -b $branch");
+}
+if (isset($options['m'])) {
+    echo "合并分支...\n";
+    exe("hg merge $branch");
+    echo "提交...\n";
+    exe("hg ci -m 'merge with $branch'");
+}
+echo "推送到服务器...\n";
+exe("hgpb $xargs");
