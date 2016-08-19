@@ -1,0 +1,7 @@
+#!/bin/bash
+sudo nginx
+sudo php-fpm -D
+sudo serverd start
+mysql.server start
+redis start
+

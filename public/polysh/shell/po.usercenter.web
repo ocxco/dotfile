@@ -1,0 +1,3 @@
+#!/bin/bash
+
+polysh --hosts-file=/home/xuechaoc/hosts/usercenter.txt

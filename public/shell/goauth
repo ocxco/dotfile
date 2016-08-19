@@ -1,0 +1,21 @@
+#!/usr/bin/php
+<?php
+/**
+ * 谷歌两步验证.
+ * 
+ * @author xuechaoc <xuechaoc@jumei.com>
+ *
+ * @date 2016-08-19
+ */
+
+$key = 'B6JPSLBX2CHHDNBH';
+$pass = 'Myadmin1';
+$goPath = '~/workspace/git/two-factor-auth/main.go';
+$cmd = "go run $goPath $key";
+ob_start();
+$result = system($cmd);
+ob_end_clean();
+$info = explode(' (', $result);
+$pass = $pass . $info[0];
+$cmd = "echo $pass";
+system($cmd);

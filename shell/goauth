@@ -1,5 +1,0 @@
-#!/bin/bash
-
-KEY='B6JPSLBX2CHHDNBH'
-
-go run ~/workspace/git/two-factor-auth/main.go $KEY
