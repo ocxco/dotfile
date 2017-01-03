@@ -1,2 +1,2 @@
 #!/bin/bash
-ssh $(cat /home/xuechaoc/hosts/crm_pub.txt)
+ssh $POLYSH_DIR/hosts/crm_pub.txt
