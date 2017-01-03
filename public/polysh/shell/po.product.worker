@@ -1,0 +1,3 @@
+#!/bin/bash
+
+polysh --hosts-file=$POLYSH_DIR/hosts/product.worker

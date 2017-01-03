@@ -1,0 +1,15 @@
+#!/bin/bash
+
+dir=~/Pictures/screen/
+total=`ls $dir | wc -l`
+files=`ls $dir`
+random=$(($RANDOM % $total))
+i=0
+for file in $files;
+do
+    screens[$i]=$file;
+    ((i++))
+done
+screen=${dir}${screens[$random]}
+echo $screen
+i3lock -i $screen

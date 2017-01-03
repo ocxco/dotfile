@@ -9,7 +9,7 @@
  */
 
 $key = 'B6JPSLBX2CHHDNBH';
-$pass = 'Myadmin1';
+$pass = 'Chen(!)@!!1';
 $goPath = '~/workspace/git/two-factor-auth/main.go';
 $cmd = "go run $goPath $key";
 ob_start();
@@ -17,5 +17,5 @@ $result = system($cmd);
 ob_end_clean();
 $info = explode(' (', $result);
 $pass = $pass . $info[0];
-$cmd = "echo $pass";
-system($cmd);
+echo $pass . "\n";
+echo trim($info[1], ')') ."\n";
