@@ -61,9 +61,34 @@ else
     if [ $currentMd5 == $stableMd5 ]; then
         echo "~/.vimrc文件与版本库文件相同，跳过.."
     else
-        echo "开始比较vimrc文件差异"
-        meld ~/.vimrc ./vimrc
-        echo "差异比较完毕"
+        type meld
+        if [ $? -eq 0 ]; then
+            echo 已选择meld作为比较工具
+            cmd=meld
+        else
+            type vimdiff
+            if [ $? -eq 0 ]; then
+                cmd=vimdiff
+                echo 已选择vimdiff作为比较工具
+            else
+                echo "未安装diff工具，请安装meld或者vimdiff"
+            fi
+        fi
+        if [ $cmd ]; then
+            echo "3秒后开始比较vimrc文件差异, 准备.."
+            sleep 1
+            echo "3"
+            sleep 1
+            echo "2"
+            sleep 1
+            echo "1"
+            $cmd ~/.vimrc ./vimrc
+            if [ $? -gt 0 ]; then
+                echo 比较差异遇到问题，请重试
+            else
+                echo "差异比较完毕"
+            fi
+        fi
     fi
 fi
 echo "vim环境初始化完毕"
