@@ -3,69 +3,69 @@
 BASEDIR=/etc/openvpn/
 
 vpnStarted() {
-	proc=`ps aux | grep openvpn | grep -v grep`
-	if [[ $proc == "" ]]; then
-		return 0
-	else
-		return 1
-	fi
+    proc=`ps aux | grep openvpn | grep -v grep`
+    if [[ $proc == "" ]]; then
+        return 0
+    else
+        return 1
+    fi
 }
 
 startVpn() {
-	vpnStarted
-	if [ $? eq 1 ]; then
-		echo "Another openvpn process is running, you should stop it first"	
-	fi
-	vpn=$BASEDIR""$1
-	if [ ! -d $vpn ]; then
-		echo "vpn config $1 does not exists!"
-		exit 1
-	fi
-	res=$(sudo openvpn --daemon --cd $vpn --config $1.ovpn --log-append /var/log/ovpn.log)
-	tail -f /var/log/ovpn.log
+    vpnStarted
+    if [[ $? == 1 ]]; then
+        echo "Another openvpn process is running, you should stop it first"    
+    fi
+    vpn=$BASEDIR""$1
+    if [ ! -d $vpn ]; then
+        echo "vpn config $1 does not exists!"
+        exit 1
+    fi
+    res=$(sudo openvpn --daemon --cd $vpn --config $1.ovpn --log-append /var/log/ovpn.log)
+    tail -f /var/log/ovpn.log
 }
 
 route() {
-	# 获取当前路由信息
-	route=$(netstat -nr | grep 192.168.10)
-	if=$(echo $route | awk '{print $6}')
-	route=$(echo $route | awk '{print $2}')
-	# 删除路由
-	sudo route delete 192.168.10.0
-	echo "删除路由成功"
-	# 新建路由
-	sudo route -n add -net 192.168.10.101  -netmask 255.255.255.255 $route
-	echo "新建路由成功"
+    # 获取当前路由信息
+    route=$(netstat -nr | grep 192.168.10)
+    if=$(echo $route | awk '{print $6}')
+    route=$(echo $route | awk '{print $2}')
+    # 删除路由
+    sudo route delete 192.168.10.0
+    echo "删除路由成功"
+    # 新建路由
+    sudo route -n add -net 192.168.10.101  -netmask 255.255.255.255 $route
+    echo "新建路由成功"
 }
 
 usage() {
-	echo "Usage of vpn:"
-	echo "    vpn start <name>: start vpn from config <name> "
-	echo "    vpn stop : stop vpn process "
-	echo "    vpn route: rebuild route to access inner and outer network "
-	echo "    vpn help <name>: start vpn from config <name> "
-	echo "    vpn start <name>: start vpn from config <name> "
+    echo "Usage of vpn:"
+    echo "    vpn start <name>: start vpn from config <name> "
+    echo "    vpn stop : stop vpn process "
+    echo "    vpn route: rebuild route to access inner and outer network "
+    echo "    vpn help <name>: start vpn from config <name> "
+    echo "    vpn start <name>: start vpn from config <name> "
 }
 
 case "$1" in
-	"start")
-		startVpn $2
-		;;
-	"stop")
-		sudo killall openvpn
-		;;
-	"status")
-		vpnStarted
-		if [ $? eq 0 ]; then
-			echo "openvpn is running"
-		else 
-			echo "openvpn is not running"
-		fi
-		;;
-	"route")
-		route
-		;;
-	*)
-		usage
-		;;
+    "start")
+        startVpn $2
+        ;;
+    "stop")
+        sudo killall openvpn
+        ;;
+    "status")
+        vpnStarted
+        if [[ $? == 1 ]]; then
+            echo "openvpn is running"
+        else 
+            echo "openvpn is not running"
+        fi
+        ;;
+    "route")
+        route
+        ;;
+    *)
+        usage
+        ;;
 esac
